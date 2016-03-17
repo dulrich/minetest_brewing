@@ -4,14 +4,16 @@ Adds brewing stations, used to brew potions and other alchemical concoctions. To
 brew, a basic or advanced brewing station is used, with a cauldron, stirrer,
 fuel, and vial to combine ingredients.
 
-# basic brewing station
+# brewing station
+
+Combine ingredients with liquids to form new liquids.
 
 ```
-	(stir) Stirrer  [S]  [I] Ingredient
-	
-	(pour) Cauldron [C]  [V] Vial (pour)
-	
-	(heat) Fuel     [F]
+    (stir) Stirrer  [S]  [I] Ingredient
+    
+    (pour) Cauldron [C]--[V] Vial (pour
+                     ^ \_
+    (heat) Fuel     [F]  [L] Filter (filter)
 ```
 
 * Stirrer: wood, iron, steel, lead, silver, gold, clay, bone
@@ -29,8 +31,29 @@ burn-time of [F]
 * Vial: glass, clay, leather, gourd, steel, silver
 * (pour) empties [V] into [C] if [C] is empty, otherwise nothing
 
+* Filter: charcoal, cotton, silk, wire mesh
+* (filter) passes [C] through [F]
+
 Fuels burn at different temperatures. Depending on the recipe a range of fuels
 may work, or a specific fuel or sequence of fuels may be necessary.
+
+
+# still
+
+Distill liquids into more potent forms.
+
+```
+    Ingredient      [I][J][K]
+                          [H] Hopper
+    (heat) Fuel     [F]-->[V] Vial
+```
+
+* Ingredient: I,J,K are liquids, one from each stack will be distilled in each cycle
+
+* Hopper: empty containers
+
+* Fuel: stick, log, coal
+* (heat) consumes 1 unit of [F], processes 1 of [I,J,K] and [H] into [V]
 
 
 # process (new health potion)
